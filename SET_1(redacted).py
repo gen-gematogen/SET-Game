@@ -1,10 +1,19 @@
+from tkinter import *
+import random
+from tkinter import filedialog
+import fileinput
+from PIL import ImageTk, Image, ImageGrab
+import PIL.Image
+import PIL.ImageTk
+import os
+import shutil
+
 def saver(event):
     global quests
     global sets_names
 
     old_path=os.getcwd()
     
-
     p="\ "
     p=p[0:1]
     g=os.listdir(path=".")
@@ -63,7 +72,6 @@ def saver(event):
     path=old_path+"\LastSave"
     os.chdir(path)
 
-    
     folder = path +'\Cards'
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)
@@ -75,7 +83,6 @@ def saver(event):
         file_path = os.path.join(folder, the_file)
         if os.path.isfile(file_path):
             os.unlink(file_path)
-
 
     try:
         os.makedirs('Cards')
@@ -129,7 +136,8 @@ def set_finder():
             for k in range(j+1,12):
                 cnt=0
                 for z in range(4):
-                    if (quests[m][i][z]==quests[m][j][z]==quests[m][k][z]) or (quests[m][i][z]!=quests[m][j][z] and quests[m][i][z]!=quests[m][k][z] and quests[m][j][z]!=quests[m][k][z]):
+                    if (quests[m][i][z]==quests[m][j][z]==quests[m][k][z]) or (quests[m][i][z]!=quests[m][j][z] and
+                            quests[m][i][z]!=quests[m][k][z] and quests[m][j][z]!=quests[m][k][z]):
                         cnt+=1
                     else:
                         break
@@ -228,11 +236,6 @@ def generator(event):
                         quests[i][j]=now
                         q=1
 
-
-
-
-
-
 def start(event):  #Создание начального окна
     global panel
     global panel_2
@@ -278,21 +281,6 @@ def start(event):  #Создание начального окна
     save=Button(panel,text="Сохранить", width=41, height=2)
     save.bind("<Button-1>",saver)
     save.place(x=5,y=187)
-    
-    
-
-    
-from tkinter import *
-import random
-from tkinter import filedialog
-import fileinput
-from PIL import ImageTk, Image, ImageGrab
-import PIL.Image
-import PIL.ImageTk
-import os
-import shutil
-
-
 
 root=Tk()
 root.title("SET")
